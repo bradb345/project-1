@@ -59,9 +59,11 @@ let gameSpeed2 = 100
 let musicIsPlaying = true
 let sfxIsOn = true
 let isOnePlayer = true
+window.onload = function () {
+  elements.audio1.src = './Sounds/Grid_Music.mp3'
+  elements.audio1.play()
+}
 
-elements.audio1.src = './Sounds/Grid_Music.mp3'
-elements.audio1.play()
 
 
 
