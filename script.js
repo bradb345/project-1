@@ -62,8 +62,8 @@ let musicIsPlaying = true
 let sfxIsOn = true
 let isOnePlayer = true
 
-elements.audio1.src = './Sounds/Grid_Music.mp3'
-elements.audio1.play()
+// elements.audio1.src = './Sounds/Grid_Music.mp3'
+// elements.audio1.play()
 
 
 
@@ -714,8 +714,10 @@ elements.twoPlayer.addEventListener('click', () => {
 
 })
 
-elements.splashButton.addEventListener('click', ()=>{
+elements.splashButton.addEventListener('click', () => {
   elements.splash.style.display = 'none'
+  elements.audio1.src = './Sounds/Grid_Music.mp3'
+  elements.audio1.play()
 })
 
 // !\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ a.i. experament
