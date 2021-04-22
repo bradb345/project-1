@@ -56,16 +56,13 @@ let intervalId = 0
 let intervalId2 = 0
 let gameSpeed = 100
 let gameSpeed2 = 100
-let musicIsPlaying = true
+let musicIsPlaying = false
 let sfxIsOn = true
 let isOnePlayer = true
-window.onload = function () {
-  setTimeout(() => {
-    elements.audio1.src = './Sounds/Grid_Music.mp3'
-    elements.audio1.play()
-  }, 2000)
 
-}
+// elements.audio1.src = './Sounds/Grid_Music.mp3'
+// elements.audio1.play()
+
 
 
 
