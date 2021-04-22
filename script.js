@@ -59,7 +59,7 @@ let gameSpeed2 = 100
 let musicIsPlaying = true
 let sfxIsOn = true
 let isOnePlayer = true
-elements.audio1.src = 'sounds/Grid_Music.mp3'
+elements.audio1.src = './sounds/Grid_Music.mp3'
 elements.audio1.loop = true
 elements.audio1.play()
 
@@ -577,7 +577,7 @@ function addGoal1() {
   if (tiles[snake1[0]] === tiles[goal1Index]) {
 
     if (sfxIsOn === true) {
-      elements.audio2.src = 'sounds/chime.mp3'
+      elements.audio2.src = './sounds/chime.mp3'
       elements.audio2.play()
     }
 
@@ -612,7 +612,7 @@ function addGoal2() {
   if (tiles[snake2[0]] === tiles[goal2Index]) {
 
     if (sfxIsOn === true) {
-      elements.audio2.src = 'sounds/chime.mp3'
+      elements.audio2.src = './sounds/chime.mp3'
       elements.audio2.play()
     }
 
@@ -665,7 +665,7 @@ elements.music.addEventListener('click', () => {
     elements.musicStatus.innerHTML = 'OFF'
     musicIsPlaying = false
   } else if (musicIsPlaying === false) {
-    elements.audio1.src = 'sounds/Grid_Music.mp3'
+    elements.audio1.src = './sounds/Grid_Music.mp3'
     elements.audio1.play()
     elements.musicStatus.innerHTML = 'ON'
     musicIsPlaying = true
