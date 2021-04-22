@@ -16,6 +16,8 @@ const elements = {
   twoPlayer: document.querySelector('#two'),
   oneDot: document.querySelector('#ops'),
   twoDot: document.querySelector('#tps'),
+  splash: document.querySelector('.splash'),
+  splashButton: document.querySelector('#splash-button'),
 }
 
 //!\\\\\\\\\\\\\\\\\\\\\\\\\\\ grid
@@ -56,12 +58,12 @@ let intervalId = 0
 let intervalId2 = 0
 let gameSpeed = 100
 let gameSpeed2 = 100
-let musicIsPlaying = false
+let musicIsPlaying = true
 let sfxIsOn = true
 let isOnePlayer = true
 
-// elements.audio1.src = './Sounds/Grid_Music.mp3'
-// elements.audio1.play()
+elements.audio1.src = './Sounds/Grid_Music.mp3'
+elements.audio1.play()
 
 
 
@@ -710,6 +712,10 @@ elements.twoPlayer.addEventListener('click', () => {
   elements.twoDot.innerHTML = '•'
   isOnePlayer = false
 
+})
+
+elements.splashButton.addEventListener('click', ()=>{
+  elements.splash.style.display = 'none'
 })
 
 // !\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ a.i. experament
