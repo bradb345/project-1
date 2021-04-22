@@ -59,8 +59,11 @@ let gameSpeed2 = 100
 let musicIsPlaying = true
 let sfxIsOn = true
 let isOnePlayer = true
-elements.audio1.src = './Sounds/Grid_Music.mp3'
-elements.audio1.play()
+window.addEventListener('DOMContentLoaded', () => {
+  elements.audio1.src = './Sounds/Grid_Music.mp3'
+  elements.audio1.play()
+})
+
 elements.audio1.loop = true
 
 
@@ -639,7 +642,7 @@ function addGoal2() {
 }
 
 function portalClear() {
-  
+
   portal1.forEach((item) => {
     tiles[item].classList.remove('snake1')
     tiles[item].classList.remove('snake1Head')
