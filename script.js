@@ -31,11 +31,13 @@ for (let i = 0; i < width ** 2; i++) {
   elements.grid.appendChild(div)
   div.style.width = `${100 / width}%`
   div.style.height = `${100 / width}%`
-  // div.innerHTML = i
+  div.id = i
   tiles.push(div)
-
-
 }
+
+
+
+
 
 //! \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\      limits
 
@@ -67,6 +69,7 @@ let isOnePlayer = true
 
 
 
+// astar.search(tiles, 280, 2537)
 
 
 
@@ -597,7 +600,7 @@ function addGoal1() {
       elements.score.innerHTML = score
     }
 
-    if (gameSpeed > 30) {
+    if (gameSpeed > 60) {
       gameSpeed -= 10
       console.log(gameSpeed)
     }
@@ -627,7 +630,7 @@ function addGoal2() {
       elements.audio2.play()
     }
 
-    if (gameSpeed2 > 30) {
+    if (gameSpeed2 > 60) {
       gameSpeed2 -= 10
       console.log(gameSpeed2)
     }
@@ -721,5 +724,4 @@ elements.splashButton.addEventListener('click', () => {
 })
 
 // !\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ a.i. experament
-
 
