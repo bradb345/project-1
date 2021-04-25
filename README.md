@@ -26,7 +26,7 @@ you could find my game [here](https://bradb345.github.io/project-1/)
 
 - HTML
 - CSS
-- JavaScript (ES6)
+- JavaScript (ECMAScript 2020)
 - Git and GitHub
 - Logic Pro X
 
