@@ -156,6 +156,137 @@ document.addEventListener('keydown', (event) => {
     }
 ```
 
+### End the Game
+
+- I set the game mode, "isOnePlayer" to a boolean. If isOnePlayer is true then the player ends the game by either running into the walls or by running into himself. 
+
+- if the game mode, "isOnePlayer" is set to false then the ways the game can end get more complicated. It can result in a tie if both players heads occupy the same space. If one players head occupies the other players body, the wall, or himself, then the other player wins. If a player eats the other players food the other player wins.
+
+```js
+if (isOnePlayer === true) {
+
+        if (tiles[snake1[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'GAME OVER'
+          stopGame()
+          return
+        }
+
+
+        for (let i = 1; i < snake1.length; i++) {
+          if (snake1[0] === snake1[i]) {
+            elements.results.innerHTML = 'GAME OVER'
+            stopGame()
+            return
+          }
+
+        }
+      } else {
+
+        if (snake1[0] === snake2[0]) {
+          elements.results.innerHTML = 'IT\'S A TIE???'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake1[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake1[0]].classList.contains('snake2')) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]].classList.contains('snake1')) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+
+        if (tiles[snake1[0]] === tiles[goal2Index]) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]] === tiles[goal1Index]) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+        for (let i = 1; i < snake1.length; i++) {
+          if (snake1[0] === snake1[i]) {
+            elements.results.innerHTML = 'PLAYER TWO WINS'
+            stopGame()
+            return
+          }
+
+        }
+
+        for (let i = 1; i < snake2.length; i++) {
+          if (snake2[0] === snake2[i]) {
+            elements.results.innerHTML = 'PLAYER ONE WINS'
+            stopGame()
+            return
+          }
+        }
+      }
+```
+
+### Food and Scoring
+
+- If isOnePlayer is true then the single player will recieve 100 points for every piece of food they eat and goes by 4. if isOnePlayer is false then the scoring functionality is taken away and its just a win and lose game. 
+
+- If the players head occupies the same space as the food then it is taken away and the addGoal funtion is run.
+
+```js
+function addGoal1() {
+
+  if (tiles[snake1[0]] === tiles[goal1Index]) {
+
+    if (sfxIsOn === true) {
+      elements.audio2.src = './Sounds/chime.mp3'
+      elements.audio2.play()
+    }
+
+    if (isOnePlayer === true) {
+      score += 100
+      elements.score.innerHTML = score
+    }
+
+    if (gameSpeed > 60) {
+      gameSpeed -= 10
+      console.log(gameSpeed)
+    }
+
+    setTimeout(() => {
+      snake1.push(goal1Index, goal1Index, goal1Index, goal1Index)
+    }, gameSpeed * snake1.length)
+
+    tiles[goal1Index].classList.remove('goal1')
+    goal1Index = Math.floor(Math.random() * tiles.length)
+    tiles[goal1Index].classList.add('goal1')
+  }
+  if (tiles[goal1Index].classList.contains('limit') || tiles[goal1Index].classList.contains('snake1') || tiles[goal1Index].classList.contains('snake2') || tiles[goal2Index].classList.contains('portal1') || tiles[goal2Index].classList.contains('portal2') || tiles[goal1Index].classList.contains('goal2')) {
+    tiles[goal1Index].classList.remove('goal1')
+    goal1Index = Math.floor(Math.random() * tiles.length)
+    tiles[goal1Index].classList.add('goal1')
+  }
+
+}
+```
+
 
 
 
