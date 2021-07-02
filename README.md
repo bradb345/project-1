@@ -69,7 +69,7 @@ You could find my game [here](https://bradb345.github.io/project-1/)
 
   
 
-I set the width and the empty array for the grid. then set a for loop to create each grid tile and append it to my div, style the height and width of each tile, give it an Id the push it to the array.
+- I set the width and the empty array for the grid. then set a for loop to create each grid tile and append it to my div, style the height and width of each tile, give it an Id the push it to the array.
 
   
 
@@ -110,7 +110,7 @@ tiles.push(div)
 
   
 
-For this I used a for loop to determine the boarders of the grid and give them a class of limit. I used this limit to determine when to kill the snake.
+- For this I used a for loop to determine the boarders of the grid and give them a class of limit. I used this limit to determine when to kill the snake.
 
   
 
@@ -134,7 +134,7 @@ tiles[i].classList.add('limit')
 
   
 
-I set the portal 1 top left corner to 631 and used that coordinate to hard code the other coordinates of the portal box and put them in an array. Then used a forEach on that array to give each item in the array a class of 'portal1'. then I repeated this for 'portal2'
+- I set the portal 1 top left corner to 631 and used that coordinate to hard code the other coordinates of the portal box and put them in an array. Then used a forEach on that array to give each item in the array a class of 'portal1'. then I repeated this for 'portal2'
 
   
 
@@ -181,7 +181,7 @@ tiles[i].classList.add('portal2')
 
   
 
-Upon the users keydown a setInterval is killed and another started right away, the logic below determines what should happen depending on which key is pressed. It then removes the class 'snake1' from that item and then removes the last item of the 'snake1' array and adds a new item to the beginning of the array and gives it two classes, 'snake1' and 'snake1head' and removes the class 'snake1head' from the second element, that way the first item in the array is always the styled as the head. I repeated this for the second snake, adjusting for the W,A,S,D keydown inputs.
+- Upon the users keydown a setInterval is killed and another started right away, the logic below determines what should happen depending on which key is pressed. It then removes the class 'snake1' from that item and then removes the last item of the 'snake1' array and adds a new item to the beginning of the array and gives it two classes, 'snake1' and 'snake1head' and removes the class 'snake1head' from the second element, that way the first item in the array is always the styled as the head. I repeated this for the second snake, adjusting for the W,A,S,D keydown inputs.
 
   
 
@@ -260,11 +260,11 @@ tiles[snake1[1]].classList.remove('snake1Head')
 
   
 
-I created an array that can only contain two items. it constantly removes the last key down and adds the new key down to the beginning. Doing this keeps track of the previous key down so that I could add logic to return if current key down is opposite to the previous key down or equal to it. this way it prevents the user from moving the snake backwards through itself. This was also repeated for the second player.
+- I created an array that can only contain two items. it constantly removes the last key down and adds the new key down to the beginning. Doing this keeps track of the previous key down so that I could add logic to return if current key down is opposite to the previous key down or equal to it. this way it prevents the user from moving the snake backwards through itself. This was also repeated for the second player.
 
   
 
-I also added an event.preventDefault() to the end of each setInterval to stop the space bar and enter key from pausing the game.
+- I also added an event.preventDefault() to the end of each setInterval to stop the space bar and enter key from pausing the game.
 
   
 
@@ -312,11 +312,11 @@ return
 
   
 
-I set the game mode, "isOnePlayer" to a boolean. If isOnePlayer is true then the player ends the game by either running into the walls or by running into himself.
+- I set the game mode, "isOnePlayer" to a boolean. If isOnePlayer is true then the player ends the game by either running into the walls or by running into himself.
 
   
 
-If the game mode, "isOnePlayer" is set to false then the ways the game can end get more complicated. It can result in a tie if both players heads occupy the same space. If one players head occupies the other players body, the wall, or himself, then the other player wins. If a player eats the other players food the other player wins.
+- If the game mode, "isOnePlayer" is set to false then the ways the game can end get more complicated. It can result in a tie if both players heads occupy the same space. If one players head occupies the other players body, the wall, or himself, then the other player wins. If a player eats the other players food the other player wins.
 
   
 
@@ -486,11 +486,11 @@ return
 
   
 
-If isOnePlayer is true then the single player will receive 100 points for every piece of food they eat and goes by 4. if isOnePlayer is false then the scoring functionality is taken away and its just a win and lose game.
+- If isOnePlayer is true then the single player will receive 100 points for every piece of food they eat and goes by 4. if isOnePlayer is false then the scoring functionality is taken away and its just a win and lose game.
 
   
 
-If the players head occupies the same space as the food then it is taken away and the addGoal function is run.
+- If the players head occupies the same space as the food then it is taken away and the addGoal function is run.
 
   
 
