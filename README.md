@@ -383,3 +383,25 @@ function addGoal1() {
 
 ```
 
+### Wins and Challenges 
+
+#### - Challenges
+
+- Implementing multiplayer functionality was a challenge, particularly when it comes to the logic involved with determining the winner of a game. There were a lot of moving parts but in the end it all came together.
+- Implementing the portal functionality was also a challenge.  Initially I thought I would be able to have the player spawn inside the portal but found it would trap the player inside. I realized I would have to code the side the player should exit based on the side of the opposite portal the player entered.
+
+#### - Wins
+
+- When I started this project I set out to reach the MVP and have a basic game. I was not fully confident in my coding abilities, but the more I coded the more things started to click. By the end of the project I was able to reach MVP and surpass it by Implementing 2  additional stretch goals.    
+
+
+### Key Learning
+
+- Array Methods
+- Functions
+- I also learned that Chrome does not allow music to play on a site without the user first interacting with the site.
+
+### Future Improvements 
+- Creating a Backend API for the game to be multiplayer online rather than only on a single machine.
+- The game has a bug where the player randomly dies. I couldn’t figure out the bug before the project was due, so fixing that bug would be an improvement.
+- Implementing the A* algorithm to the computer player so that it tries to defeat the user. 
