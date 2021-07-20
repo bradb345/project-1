@@ -74,33 +74,18 @@ You could find my game [here](https://bradb345.github.io/project-1/)
   
 
 ```js
+const width = 55
+const tiles = []
 
-  
 
-const  width  =  55
-
-const  tiles  = []
-
-  
-  
-
-for (let  i  =  0; i  <  width  **  2; i++) {
-
-const  div  =  document.createElement('div')
-
-elements.grid.appendChild(div)
-
-div.style.width  =  `${100  /  width}%`
-
-div.style.height  =  `${100  /  width}%`
-
-div.id  =  i
-
-tiles.push(div)
-
+for (let i = 0; i < width ** 2; i++) {
+  const div = document.createElement('div')
+  elements.grid.appendChild(div)
+  div.style.width = `${100 / width}%`
+  div.style.height = `${100 / width}%`
+  div.id = i
+  tiles.push(div)
 }
-
-  
 
 ```
 
@@ -116,14 +101,10 @@ tiles.push(div)
 
 ```js
 
-for (let  i  =  0; i  <  tiles.length; i++) {
-
-if (i  <  width  ||  i  %  width  ===  0  ||  i  > (width  **  2) -  width  -  1  ||  i  %  width  ===  width  -  1) {
-
-tiles[i].classList.add('limit')
-
-}
-
+for (let i = 0; i < tiles.length; i++) {
+  if (i < width || i % width === 0 || i > (width ** 2) - width - 1 || i % width === width - 1) {
+    tiles[i].classList.add('limit')
+  }
 }
 
 ```
@@ -140,38 +121,26 @@ tiles[i].classList.add('limit')
 
 ```js
 
-const  p1tlc  =  631
+const p1tlc = 631
+const p2tlc = 2281
+const portal1 = [p1tlc, p1tlc + 1, p1tlc + 2, p1tlc + width, p1tlc + width + 2, p1tlc + width * 2, p1tlc + width * 2 + 1, p1tlc + width * 2 + 2]
+const portal2 = [p2tlc, p2tlc + 1, p2tlc + 2, p2tlc + width, p2tlc + width + 2, p2tlc + width * 2, p2tlc + width * 2 + 1, p2tlc + width * 2 + 2]
 
-const  p2tlc  =  2281
+const portal1Center = portal1[3] + 1
+const portal2Center = portal2[3] + 1
 
-const  portal1  = [p1tlc, p1tlc  +  1, p1tlc  +  2, p1tlc  +  width, p1tlc  +  width  +  2, p1tlc  +  width  *  2, p1tlc  +  width  *  2  +  1, p1tlc  +  width  *  2  +  2]
-
-const  portal2  = [p2tlc, p2tlc  +  1, p2tlc  +  2, p2tlc  +  width, p2tlc  +  width  +  2, p2tlc  +  width  *  2, p2tlc  +  width  *  2  +  1, p2tlc  +  width  *  2  +  2]
-
-  
-
-const  portal1Center  =  portal1[3] +  1
-
-const  portal2Center  =  portal2[3] +  1
-
-  
-  
 
 portal1.forEach((i) => {
-
-tiles[i].classList.add('portal1')
-
+  tiles[i].classList.add('portal1')
+  tiles[i].classList.remove('snake1')
+  tiles[i].classList.remove('snake2')
 })
-
-  
 
 portal2.forEach((i) => {
-
-tiles[i].classList.add('portal2')
-
+  tiles[i].classList.add('portal2')
+  tiles[i].classList.remove('snake1')
+  tiles[i].classList.remove('snake2')
 })
-
-  
 
 ```
 
@@ -187,70 +156,39 @@ tiles[i].classList.add('portal2')
 
 ```js
 
-if (key  ===  'ArrowDown'  &&  !(snake1  > (width  **  2) -  width  -  1)) {
+if (key === 'ArrowDown' && !(snake1 > (width ** 2) - width - 1)) {
 
-  
+        tiles[snake1[snake1.length - 1]].classList.remove('snake1')
+        snake1.pop()
+        snake1.unshift(snake1[0] + width)
+        tiles[snake1[0]].classList.add('snake1', 'snake1Head')
+        tiles[snake1[1]].classList.remove('snake1Head')
 
-tiles[snake1[snake1.length  -  1]].classList.remove('snake1')
 
-snake1.pop()
+      } else if (key === 'ArrowLeft' && !(snake1 % width === 0)) {
 
-snake1.unshift(snake1[0] +  width)
+        tiles[snake1[snake1.length - 1]].classList.remove('snake1')
+        snake1.pop()
+        snake1.unshift(snake1[0] - 1)
+        tiles[snake1[0]].classList.add('snake1', 'snake1Head')
+        tiles[snake1[1]].classList.remove('snake1Head')
 
-tiles[snake1[0]].classList.add('snake1', 'snake1Head')
+      } else if (key === 'ArrowRight' && !(snake1 % width === width - 1)) {
 
-tiles[snake1[1]].classList.remove('snake1Head')
+        tiles[(snake1[snake1.length - 1])].classList.remove('snake1')
+        snake1.pop()
+        snake1.unshift(snake1[0] + 1)
+        tiles[snake1[0]].classList.add('snake1', 'snake1Head')
+        tiles[snake1[1]].classList.remove('snake1Head')
 
-  
-  
+      } else if (key === 'ArrowUp' && !(snake1 < width)) {
 
-} else  if (key  ===  'ArrowLeft'  &&  !(snake1  %  width  ===  0)) {
-
-  
-
-tiles[snake1[snake1.length  -  1]].classList.remove('snake1')
-
-snake1.pop()
-
-snake1.unshift(snake1[0] -  1)
-
-tiles[snake1[0]].classList.add('snake1', 'snake1Head')
-
-tiles[snake1[1]].classList.remove('snake1Head')
-
-  
-
-} else  if (key  ===  'ArrowRight'  &&  !(snake1  %  width  ===  width  -  1)) {
-
-  
-
-tiles[(snake1[snake1.length  -  1])].classList.remove('snake1')
-
-snake1.pop()
-
-snake1.unshift(snake1[0] +  1)
-
-tiles[snake1[0]].classList.add('snake1', 'snake1Head')
-
-tiles[snake1[1]].classList.remove('snake1Head')
-
-  
-
-} else  if (key  ===  'ArrowUp'  &&  !(snake1  <  width)) {
-
-  
-
-tiles[snake1[snake1.length  -  1]].classList.remove('snake1')
-
-snake1.pop()
-
-snake1.unshift(snake1[0] -  width)
-
-tiles[snake1[0]].classList.add('snake1', 'snake1Head')
-
-tiles[snake1[1]].classList.remove('snake1Head')
-
-}
+        tiles[snake1[snake1.length - 1]].classList.remove('snake1')
+        snake1.pop()
+        snake1.unshift(snake1[0] - width)
+        tiles[snake1[0]].classList.add('snake1', 'snake1Head')
+        tiles[snake1[1]].classList.remove('snake1Head')
+      }
 
 ```
 
@@ -272,37 +210,25 @@ tiles[snake1[1]].classList.remove('snake1Head')
 
 document.addEventListener('keydown', (event) => {
 
-  
+  const key = event.key
 
-const  key  =  event.key
+  if (key === 'w' || key === 's' || key === 'a' || key === 'd') {
 
-  
+    if (isOnePlayer === true) {
+      return
+    }
 
-if (key  ===  'ArrowUp'  ||  key  ===  'ArrowDown'  ||  key  ===  'ArrowLeft'  ||  key  ===  'ArrowRight') {
+    prevKey2.unshift(key)
+    if (prevKey2.length > 2) {
+      prevKey2.pop()
+    }
 
-  
-
-prevKey1.unshift(key)
-
-if (prevKey1.length  >  2) {
-
-prevKey1.pop()
-
-}
-
-  
-
-if (prevKey1[1] ===  'ArrowDown'  &&  prevKey1[0] ===  'ArrowUp'  ||  prevKey1[0] ===  prevKey1[1] ||
-
-prevKey1[1] ===  'ArrowUp'  &&  prevKey1[0] ===  'ArrowDown'  ||
-
-prevKey1[1] ===  'ArrowLeft'  &&  prevKey1[0] ===  'ArrowRight'  ||
-
-prevKey1[1] ===  'ArrowRight'  &&  prevKey1[0] ===  'ArrowLeft') {
-
-return
-
-}
+    if (prevKey2[1] === 's' && prevKey2[0] === 'w' || prevKey2[0] === prevKey2[1] ||
+      prevKey2[1] === 'w' && prevKey2[0] === 's' ||
+      prevKey2[1] === 'a' && prevKey2[0] === 'd' ||
+      prevKey2[1] === 'd' && prevKey2[0] === 'a') {
+      return
+    }
 
 ```
 
@@ -322,161 +248,85 @@ return
 
 ```js
 
-if (isOnePlayer  ===  true) {
-
-  
-
-if (tiles[snake1[0]].classList.contains('limit')) {
-
-elements.results.innerHTML  =  'GAME OVER'
-
-stopGame()
-
-return
-
-}
-
-  
-  
-
-for (let  i  =  1; i  <  snake1.length; i++) {
-
-if (snake1[0] ===  snake1[i]) {
-
-elements.results.innerHTML  =  'GAME OVER'
-
-stopGame()
-
-return
-
-}
-
-  
-
-}
-
-} else {
-
-  
-
-if (snake1[0] ===  snake2[0]) {
-
-elements.results.innerHTML  =  'IT\'S A TIE???'
-
-stopGame()
-
-return
-
-}
-
-  
-
-if (tiles[snake1[0]].classList.contains('limit')) {
-
-elements.results.innerHTML  =  'PLAYER TWO WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-if (tiles[snake2[0]].classList.contains('limit')) {
-
-elements.results.innerHTML  =  'PLAYER ONE WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-if (tiles[snake1[0]].classList.contains('snake2')) {
-
-elements.results.innerHTML  =  'PLAYER TWO WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-if (tiles[snake2[0]].classList.contains('snake1')) {
-
-elements.results.innerHTML  =  'PLAYER ONE WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-  
-
-if (tiles[snake1[0]] ===  tiles[goal2Index]) {
-
-elements.results.innerHTML  =  'PLAYER TWO WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-if (tiles[snake2[0]] ===  tiles[goal1Index]) {
-
-elements.results.innerHTML  =  'PLAYER ONE WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-for (let  i  =  1; i  <  snake1.length; i++) {
-
-if (snake1[0] ===  snake1[i]) {
-
-elements.results.innerHTML  =  'PLAYER TWO WINS'
-
-stopGame()
-
-return
-
-}
-
-  
-
-}
-
-  
-
-for (let  i  =  1; i  <  snake2.length; i++) {
-
-if (snake2[0] ===  snake2[i]) {
-
-elements.results.innerHTML  =  'PLAYER ONE WINS'
-
-stopGame()
-
-return
-
-}
-
-}
-
-}
+if (isOnePlayer === true) {
+
+        if (tiles[snake1[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'GAME OVER'
+          stopGame()
+          return
+        }
+
+
+        for (let i = 1; i < snake1.length; i++) {
+          if (snake1[0] === snake1[i]) {
+            elements.results.innerHTML = 'GAME OVER'
+            stopGame()
+            return
+          }
+
+        }
+      } else {
+
+        if (snake1[0] === snake2[0]) {
+          elements.results.innerHTML = 'IT\'S A TIE???'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake1[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]].classList.contains('limit')) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake1[0]].classList.contains('snake2')) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]].classList.contains('snake1')) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+
+        if (tiles[snake1[0]] === tiles[goal2Index]) {
+          elements.results.innerHTML = 'PLAYER TWO WINS'
+          stopGame()
+          return
+        }
+
+        if (tiles[snake2[0]] === tiles[goal1Index]) {
+          elements.results.innerHTML = 'PLAYER ONE WINS'
+          stopGame()
+          return
+        }
+
+        for (let i = 1; i < snake1.length; i++) {
+          if (snake1[0] === snake1[i]) {
+            elements.results.innerHTML = 'PLAYER TWO WINS'
+            stopGame()
+            return
+          }
+
+        }
+
+        for (let i = 1; i < snake2.length; i++) {
+          if (snake2[0] === snake2[i]) {
+            elements.results.innerHTML = 'PLAYER ONE WINS'
+            stopGame()
+            return
+          }
+        }
+      }
 
 ```
 
@@ -496,72 +346,40 @@ return
 
 ```js
 
-function  addGoal1() {
+function addGoal1() {
 
-  
+  if (tiles[snake1[0]] === tiles[goal1Index]) {
 
-if (tiles[snake1[0]] ===  tiles[goal1Index]) {
+    if (sfxIsOn === true) {
+      elements.audio2.src = './Sounds/chime.mp3'
+      elements.audio2.play()
+    }
 
-  
+    if (isOnePlayer === true) {
+      score += 100
+      elements.score.innerHTML = score
+    }
 
-if (sfxIsOn  ===  true) {
+    if (gameSpeed > 60) {
+      gameSpeed -= 10
+      console.log(gameSpeed)
+    }
 
-elements.audio2.src  =  './Sounds/chime.mp3'
+    setTimeout(() => {
+      snake1.push(goal1Index, goal1Index, goal1Index, goal1Index)
+    }, gameSpeed * snake1.length)
 
-elements.audio2.play()
-
-}
-
-  
-
-if (isOnePlayer  ===  true) {
-
-score  +=  100
-
-elements.score.innerHTML  =  score
-
-}
-
-  
-
-if (gameSpeed  >  60) {
-
-gameSpeed  -=  10
-
-console.log(gameSpeed)
-
-}
-
-  
-
-setTimeout(() => {
-
-snake1.push(goal1Index, goal1Index, goal1Index, goal1Index)
-
-}, gameSpeed  *  snake1.length)
-
-  
-
-tiles[goal1Index].classList.remove('goal1')
-
-goal1Index  =  Math.floor(Math.random() *  tiles.length)
-
-tiles[goal1Index].classList.add('goal1')
-
-}
-
-if (tiles[goal1Index].classList.contains('limit') ||  tiles[goal1Index].classList.contains('snake1') ||  tiles[goal1Index].classList.contains('snake2') ||  tiles[goal2Index].classList.contains('portal1') ||  tiles[goal2Index].classList.contains('portal2') ||  tiles[goal1Index].classList.contains('goal2')) {
-
-tiles[goal1Index].classList.remove('goal1')
-
-goal1Index  =  Math.floor(Math.random() *  tiles.length)
-
-tiles[goal1Index].classList.add('goal1')
-
-}
-
-  
+    tiles[goal1Index].classList.remove('goal1')
+    goal1Index = Math.floor(Math.random() * tiles.length)
+    tiles[goal1Index].classList.add('goal1')
+  }
+  if (tiles[goal1Index].classList.contains('limit') || tiles[goal1Index].classList.contains('snake1') || tiles[goal1Index].classList.contains('snake2') || tiles[goal2Index].classList.contains('portal1') || tiles[goal2Index].classList.contains('portal2') || tiles[goal1Index].classList.contains('goal2')) {
+    tiles[goal1Index].classList.remove('goal1')
+    goal1Index = Math.floor(Math.random() * tiles.length)
+    tiles[goal1Index].classList.add('goal1')
+  }
 
 }
 
 ```
+
