@@ -401,7 +401,7 @@ function addGoal1() {
 - Functions
 - I also learned that Chrome does not allow music to play on a site without the user first interacting with the site.
 
-### Future Improvments 
+### Future Improvements 
 - Creating a Backend API for the game to be multiplayer online rather than only on a single machine.
 - The game has a bug where the player randomly dies. I couldn’t figure out the bug before the project was due, so fixing that bug would be an improvement.
 - Implementing the A* algorithm to the computer player so that it tries to defeat the user. 
