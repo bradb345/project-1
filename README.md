@@ -11,7 +11,7 @@
 
   
 
-The first Project of my GA London course was to create a grid-based game using HTML, CSS and JavasScript. Students were given a list of games to choose from and a week to complete the game, I chose Snake but decided to keep things fresh I would tweak the game slightly by giving it a Tron theme, but kept the snake syntax in my code.
+The first project of my GA London course was to create a grid-based game using HTML, CSS and JavaScript. Students were given a list of games to choose from and a week to complete the game, I chose Snake but decided to keep things fresh I would tweak the game slightly by giving it a Tron theme, but kept the snake syntax in my code.
 
   
 
@@ -63,13 +63,13 @@ You could find my game [here](https://bradb345.github.io/project-1/)
 
 ## Approach
 
-  
+  After receiving the brief for the project, I started pseudo-coding and laying out how I wanted the game to look.  Once satisfied, I began coding. 
 
 ### Board Rendering
 
   
 
-- I set the width and the empty array for the grid. then set a for loop to create each grid tile and append it to my div, style the height and width of each tile, give it an Id the push it to the array.
+- I set the width and the empty array for the grid. Then set a for loop to create each grid tile and append it to my div, style the height and width of each tile, give it an Id then pushed it to the array.
 
   
 
@@ -146,7 +146,7 @@ portal2.forEach((i) => {
 
   
 
-### Snake Movment
+### Snake Movement
 
   
 
@@ -198,7 +198,7 @@ if (key === 'ArrowDown' && !(snake1 > (width ** 2) - width - 1)) {
 
   
 
-- I created an array that can only contain two items. it constantly removes the last key down and adds the new key down to the beginning. Doing this keeps track of the previous key down so that I could add logic to return if current key down is opposite to the previous key down or equal to it. this way it prevents the user from moving the snake backwards through itself. This was also repeated for the second player.
+- I created an array that can only contain two items. It constantly removes the last key down and adds the new key down to the beginning. Doing this keeps track of the previous key down so that I could add logic to return if current key down is opposite to the previous key down or equal to it. This way it prevents the user from moving the snake backwards through itself. This was also repeated for the second player.
 
   
 
@@ -336,7 +336,7 @@ if (isOnePlayer === true) {
 
   
 
-- If isOnePlayer is true then the single player will receive 100 points for every piece of food they eat and goes by 4. if isOnePlayer is false then the scoring functionality is taken away and its just a win and lose game.
+- If isOnePlayer is true then the single player will receive 100 points for every piece of food they eat and goes by 4. If isOnePlayer is false then the scoring functionality is taken away and its just a win and lose game.
 
   
 
@@ -392,16 +392,20 @@ function addGoal1() {
 
 #### - Wins
 
-- When I started this project I set out to reach the MVP and have a basic game. I was not fully confident in my coding abilities, but the more I coded the more things started to click. By the end of the project I was able to reach MVP and surpass it by Implementing 2  additional stretch goals.    
+- When I started this project I set out to reach the MVP and have a basic game. I was not fully confident in my coding abilities, but the more I coded the more things started to click. By the end of the project I was able to reach MVP and surpass it by implementing 2 additional stretch goals.    
 
 
 ### Key Learning
 
-- Array Methods
-- Functions
+- I became familiar with Array Methods such as forEach, filter, map and includes. These methods helped me to manipulate the data allowing me to render the game and impliment the games logic.
+- This was my first ever coding project, so functions we a new thing for me. By the end of the project I was very familiar with functions.
 - I also learned that Chrome does not allow music to play on a site without the user first interacting with the site.
 
 ### Future Improvements 
 - Creating a Backend API for the game to be multiplayer online rather than only on a single machine.
-- The game has a bug where the player randomly dies. I couldn’t figure out the bug before the project was due, so fixing that bug would be an improvement.
+
 - Implementing the A* algorithm to the computer player so that it tries to defeat the user. 
+
+### Bugs
+
+- The game has a bug where the player randomly dies. I couldn’t figure out the bug before the project was due, so fixing that bug would be an improvement.
